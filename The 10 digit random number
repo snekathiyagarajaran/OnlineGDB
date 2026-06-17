@@ -1,0 +1,16 @@
+#include <stdio.h>
+int main() {
+    long long number = 3816547290LL; 
+    int digits[10] = {3, 8, 1, 6, 5, 4, 7, 2, 9, 0};
+    printf("Checking the 10-digit number: %lld\n\n", number);
+    long long current_prefix = 0;
+    for (int i = 0; i < 10; i++) {
+        current_prefix = current_prefix * 10 + digits[i];
+        int length = i + 1;
+        printf("First %2d digits (%lld) / %2d = %lld\n", 
+        length, current_prefix, length, current_prefix / length);
+    }
+    printf("\nSuccess! The final number is: %lld\n", number);
+    return 0;
+}
+
