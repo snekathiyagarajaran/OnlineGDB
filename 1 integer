@@ -1,0 +1,14 @@
+#include <stdio.h>
+int main()
+{ unsigned int number;
+ int count = 0;
+ printf("\nEnter the unsigned integer:");
+ scanf("%d", &number);
+ while (number != 0)
+ { if ((number & 1) == 1)
+ count++;
+ number = number >> 1;
+ }
+ printf("\nNumber of one's are :%d", count);
+ return 0;
+}
