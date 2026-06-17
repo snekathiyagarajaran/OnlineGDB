@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+void reverseLetters(std::string& str) {
+    int l = 0;
+    int r = str.length() - 1;
+    while (l < r) {
+        if (!std::isalpha(str[l])) {
+            l++;
+        }
+        else if (!std::isalpha(str[r])) {
+            r--;
+        }
+        else {
+            std::swap(str[l], str[r]);
+            l++;
+            r--;
+        }
+    }
+}
+int main() {
+    std::string str = "John : oh God ! I cannot believe !";
+    std::cout << "Original: " << str << "\n";
+    reverseLetters(str);
+    std::cout << "Reversed: " << str << "\n";
+    return 0;
+}
