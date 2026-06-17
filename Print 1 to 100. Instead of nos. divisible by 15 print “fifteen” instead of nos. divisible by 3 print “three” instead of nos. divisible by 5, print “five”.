@@ -1,0 +1,24 @@
+#include <stdio.h>
+int main()
+{
+ int i=1;
+ while(i<=100)
+ {
+ if(i%15==0)
+ {
+ printf(" Fifteen ");
+ }
+ else if(i%3==0)
+ {
+ printf(" Three ");
+ }
+ else if(i%5==0)
+ {
+ printf(" Five ");
+ }else{
+ printf(" %d ", i );
+ }
+ i++;
+ }
+ return 0;
+}
