@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<stdio.h>
+#include<string.h>
+int isalphanum(char ch)
+{
+ if(ch>='A' && ch<='Z')
+ return 1;
+ else if(ch>='a' && ch<='z')
+ return 1;
+ else if(ch>='0' && ch<='9')
+ return 1;
+ else if(ch ==' ')
+ return 1;
+ else
+ return 0;
+}
+int main()
+{
+ char str[50],temp;
+ int i,j;
+ int len;
+ printf("Enter the given string :");
+ scanf("%[^\n]",str);
+ len=strlen(str);
+ printf("The given string is :%s\n",str);
+ for(i=0,j=len-1;i<j;)
+ {
+ if(isalphanum(str[i])&&isalphanum(str[j]))
+ {
+ temp=str[i];
+ str[i]=str[j];
+ str[j]=temp;
+ i++;j--;
+ }
+ else if(!isalphanum(str[i]))
+ i++;
+ else if(!isalphanum(str[j]))
+ j--;
+ }
+ printf("The reverse string is :%s\n",str);
+}
