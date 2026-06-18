@@ -1,0 +1,21 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        if (scanner.hasNextInt()) {
+            int num = scanner.nextInt();
+            if (num <= 0) {
+                System.out.println("Please enter a positive integer.");
+            } else {
+                int digitalRoot = getDigitalRoot(num);
+                System.out.println("Digital Root: " + digitalRoot);
+            }
+        }
+        scanner.close();
+    }
+    public static int getDigitalRoot(int n) {
+        if (n == 0) return 0;
+        if (n % 9 == 0) return 9;
+        return n % 9;
+    }
+}
