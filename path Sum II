@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+        vector<vector<int>> allPaths;
+        vector<int> currentPath;
+        findPaths(root, targetSum, currentPath, allPaths);
+        return allPaths;
+    }
+private:
+    void findPaths(TreeNode* root, int targetSum, vector<int>& currentPath, vector<vector<int>>& allPaths) {
+        if (root == nullptr) {
+            return;
+        }
+        currentPath.push_back(root->val);
+        if (root->left == nullptr && root->right == nullptr) {
+            if (targetSum == root->val) {
+                allPaths.push_back(currentPath);
+            }
+        } else {
+            findPaths(root->left, targetSum - root->val, currentPath, allPaths);
+            findPaths(root->right, targetSum - root->val, currentPath, allPaths);
+        }
+        currentPath.pop_back();
+    }
+};
