@@ -1,0 +1,45 @@
+import java.util.*;
+public class Main {
+    public static String canConvertToKK(int N) {
+        if (N <= 0) return "No";
+        Set<Integer> targets = new HashSet<>();
+        int k = 1;
+        while (true) {
+            long power = (long) Math.pow(k, k);
+            if (power > N) {
+                break;
+            }
+            targets.add((int) power);
+            k++;
+        }
+        boolean[] visited = new boolean[N + 1];
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(N);
+        visited[N] = true;
+        while (!queue.isEmpty()) {
+            int current = queue.poll();
+            if (targets.contains(current)) {
+                return "Yes";
+            }
+            for (int d = 0; d <= 9; d++) {
+                if (d >= current) {
+                    break;
+                }
+                int nextValue = current - (d * d);
+                if (nextValue >= 0 && !visited[nextValue]) {
+                    visited[nextValue] = true;
+                    queue.add(nextValue);
+                }
+            }
+        }
+        return "No";
+    }
+    public static void main(String[] args) {
+        int N1 = 13;
+        System.out.println("Input: N = " + N1);
+        System.out.println("Output: " + canConvertToKK(N1));
+        int N2 = 90;
+        System.out.println("Input: N = " + N2);
+        System.out.println("Output: " + canConvertToKK(N2));
+    }
+}
